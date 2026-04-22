@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فحص منظومة التبريد — دليل الصيف الشامل</title>
+<title>دليل فحص منظومة التبريد - ميكانيك الجزائر</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --primary: #2d3436;
     --accent: #0984e3;
-    --fire: #e17055;
+    --fire: #d63031;
+    --warning: #fdcb6e;
     --success: #00b894;
     --bg-white: #ffffff;
-    --card-bg: #fdfdfd;
-    --border: #eaeff2;
-    --muted: #636e72;
+    --card-bg: #f9f9f9;
+    --border: #dfe6e9;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,135 +23,117 @@
     background: var(--bg-white);
     color: var(--primary);
     font-family: 'Cairo', sans-serif;
-    line-height: 1.8;
+    line-height: 1.7;
+    padding: 20px;
   }
 
-  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+  .container { max-width: 850px; margin: 0 auto; }
 
   /* ===== HERO ===== */
-  .hero {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(to bottom, #f1f2f6, #ffffff);
-    border-radius: 0 0 40px 40px;
-    margin-bottom: 40px;
-  }
-
-  .hero h1 { font-family: 'Tajawal', sans-serif; font-size: 2.8rem; color: var(--accent); }
-  .hero p { color: var(--muted); font-size: 1.1rem; }
+  .hero { text-align: center; padding: 40px 0; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
+  .hero h1 { font-family: 'Tajawal', sans-serif; color: var(--accent); font-size: 2.5rem; }
+  .hero p { color: #636e72; font-size: 1.1rem; }
 
   /* ===== SECTIONS ===== */
-  section { margin-bottom: 50px; }
-  .section-title { font-family: 'Tajawal', sans-serif; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: var(--primary); }
-  .icon-box { background: var(--accent); color: white; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
+  section { margin-bottom: 40px; }
+  .section-title { font-family: 'Tajawal', sans-serif; font-size: 1.4rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+  .icon-box { background: var(--accent); color: white; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
+
+  /* ===== CHECKLIST CARD ===== */
+  .checklist-card {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+  }
+  .checklist-card ul { list-style: none; }
+  .checklist-card li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
+  .check-icon { color: #f57c00; font-weight: bold; }
 
   /* ===== TIMER (CRONO) ===== */
   .timer-box {
-    background: #f8f9fa;
-    border: 2px solid var(--accent);
-    border-radius: 25px;
-    padding: 40px;
+    background: var(--card-bg);
+    border: 3px solid var(--accent);
+    border-radius: 20px;
+    padding: 30px;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
   }
-
-  .timer-display { font-family: 'Tajawal', sans-serif; font-size: 4.5rem; font-weight: 900; margin-bottom: 20px; color: var(--primary); font-variant-numeric: tabular-nums; }
-  .timer-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-
-  .btn { padding: 14px 35px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; transition: 0.3s; font-family: 'Cairo'; }
+  .timer-display { font-family: 'Tajawal', sans-serif; font-size: 4.5rem; font-weight: 900; margin-bottom: 20px; font-variant-numeric: tabular-nums; }
+  .btn { padding: 12px 30px; border-radius: 10px; border: none; font-weight: 700; cursor: pointer; font-family: 'Cairo'; transition: 0.2s; }
   .btn-start { background: var(--success); color: white; }
   .btn-stop { background: var(--fire); color: white; }
   .btn-reset { background: #b2bec3; color: white; }
+  .timer-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
-  /* ===== TABLES & CARDS ===== */
-  .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-  .data-table th { background: #f1f2f6; padding: 15px; text-align: right; color: var(--muted); font-size: 0.9rem; }
-  .data-table td { padding: 15px; border-bottom: 1px solid var(--border); }
+  /* ===== DATA TABLE ===== */
+  .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+  .data-table th { background: #f1f2f6; padding: 12px; text-align: right; font-size: 0.85rem; color: #636e72; }
+  .data-table td { padding: 12px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
 
-  .card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 15px; margin-bottom: 15px; }
-  .highlight-orange { border-right: 5px solid var(--fire); }
-  .highlight-green { border-right: 5px solid var(--success); }
-
-  footer { text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); }
+  footer { text-align: center; margin-top: 50px; color: #b2bec3; font-size: 0.8rem; }
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <h1>🌡️ فحص منظومة التبريد</h1>
-  <p>الدليل التقني الكامل لفصل الصيف — صفحة ميكانيك السيارات في الجزائر</p>
-</div>
-
 <div class="container">
+  <div class="hero">
+    <h1>🌡️ فحص منظومة التبريد</h1>
+    <p>الاختبار الحقيقي لكفاءة سيارتك في الصيف</p>
+  </div>
 
   <section>
-    <div class="section-title"><div class="icon-box">⚡</div> لماذا هذا الفحص؟</div>
-    <div class="card highlight-orange">
-      <p>منظومة التبريد هي "قلب" الحماية لمحركك. في الصيف، ترتفع الضغوط بشكل هائل، وهذا الفحص يساعدك على معرفة حالة <strong>الرادياتور</strong> و <strong>الرياشة</strong> قبل وقوع العطل.</p>
+    <div class="section-title"><div class="icon-box">📋</div> شروط نجاح الفحص</div>
+    <div class="checklist-card">
+      <ul>
+        <li><span class="check-icon">✓</span> <strong>الحرارة العالية:</strong> يُفضل الفحص عندما تكون الحرارة الخارجية 90°F (حوالي 32°C) فما فوق.</li>
+        <li><span class="check-icon">✓</span> <strong>وضعية الزحام:</strong> الفحص يكون أدق بعد فترة من السير في الزحام المروري.</li>
+        <li><span class="check-icon">✓</span> <strong>إغلاق المكيف:</strong> يجب إطفاء المكيف تماماً أثناء القياس.</li>
+        <li><span class="check-icon">✓</span> <strong>وضعية المحرك:</strong> المحرك يجب أن يكون في درجة حرارة تشغيله الطبيعية.</li>
+      </ul>
     </div>
   </section>
 
-  <section id="chrono-section">
-    <div class="section-title"><div class="icon-box">⏱️</div> العداد الاحترافي</div>
+  <section>
+    <div class="section-title"><div class="icon-box">⏱️</div> ابدأ القياس الآن</div>
     <div class="timer-box">
       <div class="timer-display" id="display">00:00:00</div>
       <div class="timer-buttons">
-        <button class="btn btn-start" onclick="startTimer()">ابدأ الفحص</button>
-        <button class="btn btn-stop" onclick="stopTimer()">إيقاف</button>
+        <button class="btn btn-start" onclick="startTimer()">بدء (عند اشتغال المروحة)</button>
+        <button class="btn btn-stop" onclick="stopTimer()">إيقاف (عند توقفها)</button>
         <button class="btn btn-reset" onclick="resetTimer()">تصفير</button>
       </div>
-      <p style="margin-top: 15px; color: var(--muted); font-size: 0.85rem;">(احسب الوقت منذ اشتغال المروحة حتى توقفها)</p>
     </div>
   </section>
 
   <section>
-    <div class="section-title"><div class="icon-box">📊</div> مرجع توقيت السيارات</div>
+    <div class="section-title"><div class="icon-box">📊</div> مرجع التوقيتات العالمية</div>
     <table class="data-table">
       <thead>
         <tr>
-          <th>نوع السيارة</th>
-          <th>وقت العمل الطبيعي</th>
-          <th>وقت الراحة</th>
+          <th>فئة السيارة</th>
+          <th>وقت العمل (المروحة)</th>
+          <th>وقت الراحة (المحرك)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>السيارات الآسيوية (Toyota, Hyundai...)</td>
+          <td>سيارات آسيوية</td>
           <td>25 - 45 ثانية</td>
           <td>90 - 120 ثانية</td>
         </tr>
         <tr>
-          <td>السيارات الأوروبية (VW, Peugeot...)</td>
+          <td>سيارات أوروبية</td>
           <td>35 - 60 ثانية</td>
           <td>120 - 180 ثانية</td>
-        </tr>
-        <tr>
-          <td>محركات التيربو الحديثة</td>
-          <td>40 - 70 ثانية</td>
-          <td>حسب ظروف القيادة</td>
         </tr>
       </tbody>
     </table>
   </section>
 
-  <section>
-    <div class="section-title"><div class="icon-box">🔍</div> نتائج التشخيص</div>
-    <div class="card highlight-green">
-      <strong>✅ وضع طبيعي:</strong> إذا كان الوقت بين 30 و 50 ثانية، المنظومة نظيفة جداً.
-    </div>
-    <div class="card highlight-orange">
-      <strong>⚠️ إنذار مبكر:</strong> إذا تجاوز الوقت 60 ثانية، فهذا يعني بداية انسداد الرادياتور أو ضعف المروحة.
-    </div>
-    <div class="card" style="border-right: 5px solid #d63031;">
-      <strong>🚨 خطر:</strong> إذا استمرت المروحة لأكثر من دقيقتين دون توقف، أوقف المحرك فوراً!
-    </div>
-  </section>
-
+  <footer>جميع الحقوق محفوظة — دليل ميكانيك السيارات في الجزائر © 2026</footer>
 </div>
-
-<footer>
-  جميع الحقوق محفوظة — صفحة ميكانيك السيارات في الجزائر © 2026
-</footer>
 
 <script>
   let startTime;
@@ -167,12 +149,7 @@
     let ss = Math.floor(diffInSec);
     let diffInMs = (diffInSec - ss) * 100;
     let ms = Math.floor(diffInMs);
-
-    let formattedMM = mm.toString().padStart(2, "0");
-    let formattedSS = ss.toString().padStart(2, "0");
-    let formattedMS = ms.toString().padStart(2, "0");
-
-    return `${formattedMM}:${formattedSS}:${formattedMS}`;
+    return `${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}:${ms.toString().padStart(2, "0")}`;
   }
 
   function startTimer() {
