@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دليل فحص منظومة التبريد - ميكانيك الجزائر</title>
+<title>دليل فحص منظومة التبريد — ميكانيك السيارات في الجزائر</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --primary: #2d3436;
     --accent: #0984e3;
     --fire: #d63031;
-    --warning: #fdcb6e;
+    --warning: #f39c12;
     --success: #00b894;
     --bg-white: #ffffff;
-    --card-bg: #f9f9f9;
-    --border: #dfe6e9;
+    --card-bg: #fdfdfd;
+    --border: #eaeff2;
+    --muted: #636e72;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,117 +24,168 @@
     background: var(--bg-white);
     color: var(--primary);
     font-family: 'Cairo', sans-serif;
-    line-height: 1.7;
-    padding: 20px;
+    line-height: 1.8;
   }
 
-  .container { max-width: 850px; margin: 0 auto; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
 
   /* ===== HERO ===== */
-  .hero { text-align: center; padding: 40px 0; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
-  .hero h1 { font-family: 'Tajawal', sans-serif; color: var(--accent); font-size: 2.5rem; }
-  .hero p { color: #636e72; font-size: 1.1rem; }
+  .hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, #f1f2f6, #ffffff);
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero h1 { font-family: 'Tajawal', sans-serif; font-size: clamp(2rem, 5vw, 3rem); color: var(--accent); margin-bottom: 15px; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
   /* ===== SECTIONS ===== */
-  section { margin-bottom: 40px; }
-  .section-title { font-family: 'Tajawal', sans-serif; font-size: 1.4rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-  .icon-box { background: var(--accent); color: white; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
+  section { margin-bottom: 50px; }
+  .section-title { font-family: 'Tajawal', sans-serif; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: var(--primary); }
+  .icon-box { background: var(--accent); color: white; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
 
-  /* ===== CHECKLIST CARD ===== */
-  .checklist-card {
-    background: #fff8e1;
-    border: 1px solid #ffe082;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 25px;
+  /* ===== CHECKLIST (The 90°C Conditions) ===== */
+  .condition-card {
+    background: #fff9f0;
+    border: 1px solid #ffeaa7;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px;
   }
-  .checklist-card ul { list-style: none; }
-  .checklist-card li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
-  .check-icon { color: #f57c00; font-weight: bold; }
+  .condition-card h3 { color: #d35400; margin-bottom: 15px; font-size: 1.2rem; }
+  .condition-card ul { list-style: none; }
+  .condition-card li { margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start; }
+  .condition-card li::before { content: "⚠️"; }
 
   /* ===== TIMER (CRONO) ===== */
   .timer-box {
-    background: var(--card-bg);
-    border: 3px solid var(--accent);
-    border-radius: 20px;
-    padding: 30px;
+    background: #f8f9fa;
+    border: 2px solid var(--accent);
+    border-radius: 25px;
+    padding: 40px;
     text-align: center;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    margin: 20px 0;
   }
-  .timer-display { font-family: 'Tajawal', sans-serif; font-size: 4.5rem; font-weight: 900; margin-bottom: 20px; font-variant-numeric: tabular-nums; }
-  .btn { padding: 12px 30px; border-radius: 10px; border: none; font-weight: 700; cursor: pointer; font-family: 'Cairo'; transition: 0.2s; }
-  .btn-start { background: var(--success); color: white; }
-  .btn-stop { background: var(--fire); color: white; }
+  .timer-display { font-family: 'Tajawal', sans-serif; font-size: 5rem; font-weight: 900; margin-bottom: 25px; color: var(--primary); font-variant-numeric: tabular-nums; letter-spacing: 2px; }
+  .timer-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+  .btn { padding: 15px 35px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; transition: 0.3s; font-family: 'Cairo'; font-size: 1rem; }
+  .btn-start { background: var(--success); color: white; box-shadow: 0 4px 10px rgba(0,184,148,0.3); }
+  .btn-stop { background: var(--fire); color: white; box-shadow: 0 4px 10px rgba(214,48,49,0.3); }
   .btn-reset { background: #b2bec3; color: white; }
-  .timer-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn:active { transform: scale(0.95); }
 
-  /* ===== DATA TABLE ===== */
-  .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
-  .data-table th { background: #f1f2f6; padding: 12px; text-align: right; font-size: 0.85rem; color: #636e72; }
-  .data-table td { padding: 12px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+  /* ===== DATA TABLES & CARDS ===== */
+  .card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 15px; margin-bottom: 15px; }
+  .highlight-orange { border-right: 6px solid var(--warning); }
+  .highlight-blue { border-right: 6px solid var(--accent); }
 
-  footer { text-align: center; margin-top: 50px; color: #b2bec3; font-size: 0.8rem; }
+  .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+  .data-table th { background: #f1f2f6; padding: 15px; text-align: right; color: var(--muted); font-size: 0.85rem; }
+  .data-table td { padding: 15px; border-bottom: 1px solid var(--border); }
+
+  footer { text-align: center; padding: 50px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 40px; }
 </style>
 </head>
 <body>
 
+<div class="hero">
+  <h1>🌡️ فحص منظومة التبريد</h1>
+  <p>دليل احترافي خطوة بخطوة — بلا أدوات، بلا مكانيك، بلا فتح الكابو</p>
+</div>
+
 <div class="container">
-  <div class="hero">
-    <h1>🌡️ فحص منظومة التبريد</h1>
-    <p>الاختبار الحقيقي لكفاءة سيارتك في الصيف</p>
-  </div>
 
   <section>
-    <div class="section-title"><div class="icon-box">📋</div> شروط نجاح الفحص</div>
-    <div class="checklist-card">
+    <div class="section-title"><div class="icon-box">📌</div> متى وكيف تبدأ الفحص؟</div>
+    <div class="condition-card">
+      <h3>الوضعية المثالية للسيارة:</h3>
       <ul>
-        <li><span class="check-icon">✓</span> <strong>الحرارة العالية:</strong> يُفضل الفحص عندما تكون الحرارة الخارجية 90°F (حوالي 32°C) فما فوق.</li>
-        <li><span class="check-icon">✓</span> <strong>وضعية الزحام:</strong> الفحص يكون أدق بعد فترة من السير في الزحام المروري.</li>
-        <li><span class="check-icon">✓</span> <strong>إغلاق المكيف:</strong> يجب إطفاء المكيف تماماً أثناء القياس.</li>
-        <li><span class="check-icon">✓</span> <strong>وضعية المحرك:</strong> المحرك يجب أن يكون في درجة حرارة تشغيله الطبيعية.</li>
+        <li>يجب أن تكون <strong>درجة حرارة المحرك 90° مئوية فما فوق</strong> (وصول المؤشر للمنتصف).</li>
+        <li>يفضل القيام بالفحص بعد السير في <strong>زحام مروري وتحت أشعة الشمس</strong> لاختبار أقصى جهد للمنظومة.</li>
+        <li><strong>إيقاف المكيف تماماً:</strong> لا تفتح المكيف أثناء الفحص لأن مروحته ستعمل إجبارياً وتفسد القياس.</li>
+        <li>توقف في مكان آمن واترك المحرك يشتغل (Ralenti) وابدأ المراقبة.</li>
       </ul>
     </div>
   </section>
 
   <section>
-    <div class="section-title"><div class="icon-box">⏱️</div> ابدأ القياس الآن</div>
+    <div class="section-title"><div class="icon-box">⏱️</div> العداد الذكي</div>
     <div class="timer-box">
       <div class="timer-display" id="display">00:00:00</div>
       <div class="timer-buttons">
-        <button class="btn btn-start" onclick="startTimer()">بدء (عند اشتغال المروحة)</button>
-        <button class="btn btn-stop" onclick="stopTimer()">إيقاف (عند توقفها)</button>
+        <button class="btn btn-start" onclick="startTimer()">بدء القياس</button>
+        <button class="btn btn-stop" onclick="stopTimer()">إيقاف</button>
         <button class="btn btn-reset" onclick="resetTimer()">تصفير</button>
       </div>
+      <p style="margin-top: 20px; color: var(--muted); font-size: 0.9rem;">(ابدأ عند سماع دوران المروحة، وتوقف عند انطفائها)</p>
     </div>
   </section>
 
   <section>
-    <div class="section-title"><div class="icon-box">📊</div> مرجع التوقيتات العالمية</div>
+    <div class="section-title"><div class="icon-box">⚙️</div> المكونات الأساسية للفحص</div>
+    <div class="card highlight-blue">
+      <strong>1. الرادياتور:</strong> التأكد من نظافته الخارجية من الأتربة والحشرات.
+    </div>
+    <div class="card highlight-blue">
+      <strong>2. الرياشة (المروحة):</strong> التأكد من دورانها في الوقت المناسب وبقوتها الكاملة.
+    </div>
+    <div class="card highlight-blue">
+      <strong>3. الترموستات:</strong> هي الصمام الذي يسمح بمرور الماء الساخن للرادياتور ليبرد.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><div class="icon-box">📊</div> مرجع توقيت السيارات العالمي</div>
     <table class="data-table">
       <thead>
         <tr>
-          <th>فئة السيارة</th>
-          <th>وقت العمل (المروحة)</th>
-          <th>وقت الراحة (المحرك)</th>
+          <th>نوع السيارة / المنظومة</th>
+          <th>وقت اشتغال المروحة</th>
+          <th>وقت الراحة (بين دورتين)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>سيارات آسيوية</td>
+          <td>آسيوية (Dacia, Toyota, Hyundai...)</td>
           <td>25 - 45 ثانية</td>
           <td>90 - 120 ثانية</td>
         </tr>
         <tr>
-          <td>سيارات أوروبية</td>
+          <td>أوروبية (VW, Peugeot, Renault...)</td>
           <td>35 - 60 ثانية</td>
           <td>120 - 180 ثانية</td>
+        </tr>
+        <tr>
+          <td>محركات التيربو الحديثة</td>
+          <td>40 - 75 ثانية</td>
+          <td>تختلف حسب الضغط</td>
         </tr>
       </tbody>
     </table>
   </section>
 
-  <footer>جميع الحقوق محفوظة — دليل ميكانيك السيارات في الجزائر © 2026</footer>
+  <section>
+    <div class="section-title"><div class="icon-box">🔍</div> ماذا تعني النتائج؟</div>
+    <div class="card" style="border-right: 6px solid var(--success);">
+      <strong>✅ حالة ممتازة:</strong> إذا توقفت المروحة في أقل من 45 ثانية والجو حار جداً.
+    </div>
+    <div class="card highlight-orange">
+      <strong>⚠️ بداية مشكل:</strong> إذا استمرت لأكثر من دقيقة، ابدأ بتنظيف الرادياتور خارجياً.
+    </div>
+    <div class="card" style="border-right: 6px solid var(--fire);">
+      <strong>🚨 خطر حقيقي:</strong> إذا اشتغلت لأكثر من دقيقتين أو لم تتوقف أبداً، لديك انسداد داخلي أو نقص ماء!
+    </div>
+  </section>
+
 </div>
+
+<footer>
+  دليل ميكانيك السيارات في الجزائر — نسعى لرفع الوعي التقني للسائقين © 2026
+</footer>
 
 <script>
   let startTime;
@@ -149,6 +201,7 @@
     let ss = Math.floor(diffInSec);
     let diffInMs = (diffInSec - ss) * 100;
     let ms = Math.floor(diffInMs);
+
     return `${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}:${ms.toString().padStart(2, "0")}`;
   }
 
@@ -174,4 +227,5 @@
 </script>
 
 </body>
-</html>
+      </html>
+      
