@@ -3,88 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فحص منظومة التبريد - نسخة سريعة</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
+<title>فحص منظومة التبريد — دليل الصيف</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #2d3436;   /* رمادي غامق للنصوص */
-    --accent: #0984e3;    /* أزرق هادئ */
-    --success: #00b894;   /* أخضر للبدء */
-    --danger: #d63031;    /* أحمر للإيقاف */
-    --bg-white: #ffffff;  /* الخلفية البيضاء */
-    --light-gray: #f5f6fa;
+    --primary: #2d3436;    /* لون النص الأساسي */
+    --accent: #0984e3;     /* لون أزرق للمكونات */
+    --fire: #e17055;       /* لون برتقالي دافئ للتحذيرات */
+    --success: #00b894;    /* أخضر للبدء */
+    --bg-white: #ffffff;   /* الخلفية البيضاء */
+    --card-bg: #f9f9f9;    /* لون البطاقات */
+    --border: #dfe6e9;     /* لون الحدود */
   }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background-color: var(--bg-white);
+    background: var(--bg-white);
     color: var(--primary);
     font-family: 'Cairo', sans-serif;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    line-height: 1.7;
+    padding-bottom: 50px;
   }
 
-  /* تصميم العداد الجديد */
-  .timer-container {
-    background: var(--light-gray);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 60px 20px;
     text-align: center;
-    max-width: 400px;
-    width: 100%;
-    margin-top: 50px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .hero h1 {
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    color: #636e72;
+    margin-top: 10px;
+  }
+
+  /* ===== SECTIONS ===== */
+  section { margin-bottom: 40px; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .icon {
+    width: 35px; height: 35px;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ===== TIMER BOX (The Corrected Chrono) ===== */
+  .timer-interactive {
+    background: var(--card-bg);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    margin: 30px 0;
   }
 
   .timer-display {
     font-family: 'Tajawal', sans-serif;
     font-size: 4rem;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--primary);
-    margin-bottom: 20px;
-    font-variant-numeric: tabular-nums; /* لمنع اهتزاز الأرقام */
+    margin-bottom: 15px;
+    font-variant-numeric: tabular-nums;
   }
 
-  .controls {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+  .timer-buttons {
+    display: flex; gap: 10px; justify-content: center;
   }
 
   .btn {
-    padding: 12px 25px;
-    border: none;
+    padding: 12px 30px;
     border-radius: 10px;
-    font-family: 'Cairo', sans-serif;
+    border: none;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.1s;
+    transition: 0.2s;
   }
 
-  .btn:active { transform: scale(0.95); }
-
   .btn-start { background: var(--success); color: white; }
-  .btn-stop { background: var(--danger); color: white; }
+  .btn-stop { background: var(--fire); color: white; }
   .btn-reset { background: #b2bec3; color: white; }
 
-  h1 { color: var(--accent); margin-bottom: 10px; }
+  /* ===== CARDS & TABLES ===== */
+  .why-card {
+    background: #fff9f0;
+    border: 1px solid #ffeaa7;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .comp-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+
+  /* تحسين الجداول للون الأبيض */
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  th { text-align: right; color: #636e72; padding: 10px; font-size: 0.8rem; }
+  td { padding: 12px; border-bottom: 1px solid var(--border); }
+
 </style>
 </head>
 <body>
 
-  <h1>فحص منظومة التبريد 🌡️</h1>
-  <p>استخدم العداد بدقة لقياس وقت اشتغال الرياشة.</p>
+<div class="hero">
+  <h1>فحص <span>منظومة التبريد</span></h1>
+  <p class="hero-subtitle">دليل ميكانيك السيارات في الجزائر — نسخة الأداء العالي</p>
+</div>
 
-  <div class="timer-container">
-    <div class="timer-display" id="display">00:00:00</div>
-    <div class="controls">
-      <button class="btn btn-start" onclick="startTimer()">بدء</button>
-      <button class="btn btn-stop" onclick="stopTimer()">إيقاف</button>
-      <button class="btn btn-reset" onclick="resetTimer()">تصفير</button>
+<div class="container">
+
+  <section>
+    <div class="section-label">
+      <div class="icon">⏱️</div>
+      <h2>العداد الذكي (كرونو)</h2>
     </div>
-  </div>
+    
+    <div class="timer-interactive">
+      <div class="timer-display" id="display">00:00:00</div>
+      <div class="timer-buttons">
+        <button class="btn btn-start" onclick="startTimer()">بدء الفحص</button>
+        <button class="btn btn-stop" onclick="stopTimer()">إيقاف</button>
+        <button class="btn btn-reset" onclick="resetTimer()">تصفير</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">
+      <div class="icon">⚡</div>
+      <h2>لماذا هذا الفحص ضروري؟</h2>
+    </div>
+    <div class="why-card">
+      <p>منظومة التبريد هي الخط الدفاعي الأول لمحركك في الصيف.</p>
+      <p>درجات الحرارة المرتفعة + الازدحام المروري يتطلبان كفاءة عالية من المروحة (الرياشة) والرادياتور.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">
+      <div class="icon">🔍</div>
+      <h2>المكونات التي سنفحصها</h2>
+    </div>
+    <div class="comp-card"><strong>الرادياتور:</strong> التأكد من عدم وجود انسداد خارجي.</div>
+    <div class="comp-card"><strong>الرياشة (المروحة):</strong> فحص سرعة الاستجابة ووقت الدوران.</div>
+    <div class="comp-card"><strong>الترموستات:</strong> المسؤولة عن فتح مجرى الماء.</div>
+  </section>
+
+</div>
 
 <script>
   let startTime;
@@ -94,13 +185,10 @@
   function timeToString(time) {
     let diffInHrs = time / 3600000;
     let hh = Math.floor(diffInHrs);
-
     let diffInMin = (diffInHrs - hh) * 60;
     let mm = Math.floor(diffInMin);
-
     let diffInSec = (diffInMin - mm) * 60;
     let ss = Math.floor(diffInSec);
-
     let diffInMs = (diffInSec - ss) * 100;
     let ms = Math.floor(diffInMs);
 
@@ -112,22 +200,23 @@
   }
 
   function startTimer() {
-    // السر تكمن هنا: نحسب الوقت بناءً على ساعة النظام وليس مجرد عداد
+    if (timerInterval) return; // يمنع تكرار العداد إذا ضغط المستخدم مرتين
     startTime = Date.now() - elapsedTime;
-    timerInterval = setInterval(function printTime() {
+    timerInterval = setInterval(function() {
       elapsedTime = Date.now() - startTime;
-      document.getElementById("display").innerHTML = timeToString(elapsedTime);
-    }, 10); // تحديث سريع جداً وسلس
+      document.getElementById("display").innerText = timeToString(elapsedTime);
+    }, 10);
   }
 
   function stopTimer() {
     clearInterval(timerInterval);
+    timerInterval = null;
   }
 
   function resetTimer() {
-    clearInterval(timerInterval);
-    document.getElementById("display").innerHTML = "00:00:00";
+    stopTimer();
     elapsedTime = 0;
+    document.getElementById("display").innerText = "00:00:00";
   }
 </script>
 
